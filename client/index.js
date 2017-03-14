@@ -1,11 +1,19 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {render} from 'react-dom'
+import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 import App from './components/App'
+import BeerDetails from './Components/BeerDetails'
+import BeerStyles from './Components/BeerStyles'
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
+  render(
+    (
+      <Router history={hashHistory}>
+        <Route path='/' component={App} />
+        <Route path='/details/:id' component={BeerDetails} />
+      </Router>
+    ),
     document.getElementById('app')
   )
 })
